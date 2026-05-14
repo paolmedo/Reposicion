@@ -26,4 +26,14 @@ public class SucursalController {
     public ResponseEntity<List<Sucursal>> listar() {
         return ResponseEntity.ok(sucursalService.obtenerTodas());
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarSucursal(@PathVariable Long id){
+        boolean eliminado = sucursalService.eliminarSucursal(id);
+        if (eliminado){
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
