@@ -30,8 +30,8 @@ El sistema implementa el patrón de diseño **CSR (Controller-Service-Repository
 
 ```text
 Proyecto_Reposicion/
-├── MicroServicioIdentidad/     # Gestión de Trabajadores en Oracle Cloud (Pavel)
-├── MicroServicioInventario/     # Gestión de Trabajadores en Oracle Cloud (Pavel)
+├── MicroServicioIdentidad/      # Gestión de Trabajadores en Oracle Cloud (Pavel)
+├── MicroServicioInventario/     # Gestión de Inventario en Oracle Cloud (Pavel)
 ├── MicroServicioSucursal/       # Gestión de Sucursales en MySQL (Javiera)
-└── MicroServicioentas/         # Gestión de Ventas en MySQL (Javiera)
+└── MicroServicioVentas/         # Gestión de Ventas en MySQL (Javiera)
 
