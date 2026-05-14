@@ -16,8 +16,8 @@ public class SucursalService {
     @Autowired
     private SucursalRepository sucursalRepository;
 
-    public Sucursal guardarSucursal(Sucursal sucursal){
-        logger.info("Service: Registrando sucursal '{}'", sucursal.getNombre());
+    public Sucursal guardarSucursal(Sucursal sucursal) {
+        logger.info("Service: Intentando registrar sucursal '{}'", sucursal.getNombre());
         return sucursalRepository.save(sucursal);
     }
     public List<Sucursal> obtenerTodas(){
