@@ -11,6 +11,7 @@ public class TrabajadorService {
     @Autowired
     private TrabajadorRepository trabajadorRepository;
 
-
-
+    public Trabajador guardarTrabajador(Trabajador nuevoTrabajador){
+        return trabajadorRepository.save(nuevoTrabajador);
+    }
 }
