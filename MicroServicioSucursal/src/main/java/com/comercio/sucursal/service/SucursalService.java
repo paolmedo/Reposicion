@@ -24,6 +24,11 @@ public class SucursalService {
         logger.info("Service: Consultando el listado total de sucursales.");
         return sucursalRepository.findAll();
     }
-
-
+    public boolean eliminarSucursal(Long id) {
+        if (sucursalRepository.existsById(id)) {
+            sucursalRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }

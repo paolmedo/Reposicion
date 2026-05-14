@@ -21,8 +21,8 @@ public class Sucursal {
     @NotBlank(message = "La dirección no puede estar vacía.")
     private String direccion;
 
-    @NotBlank(message = "La ciudad es obligatoria.")
-    private String ciudad;
+    @NotBlank(message = "El teléfono no puede estar vacío.")
+    private int telefono;
 
 
 }
