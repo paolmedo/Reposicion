@@ -1,8 +1,11 @@
 package com.comercio.sucursal.controller;
 
+import com.comercio.sucursal.dto.SucursalDTO;
 import com.comercio.sucursal.model.Sucursal;
 import com.comercio.sucursal.service.SucursalService;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,22 +16,27 @@ import java.util.List;
 @RequestMapping("/api/sucursales")
 public class SucursalController {
 
+    private static final Logger logger = LoggerFactory.getLogger(SucursalController.class);
+
     @Autowired
     private SucursalService sucursalService;
 
     @PostMapping
-    public ResponseEntity<Sucursal> crear(@Valid @RequestBody Sucursal sucursal) {
-        Sucursal nueva = sucursalService.guardarSucursal(sucursal);
+    public ResponseEntity<Sucursal> crear(@Valid @RequestBody SucursalDTO sucursalDTO) {
+        logger.info("Controller: Petición POST recibida en '/api/sucursales'");
+        Sucursal nueva = sucursalService.guardarSucursal(sucursalDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(nueva);
     }
 
     @GetMapping
     public ResponseEntity<List<Sucursal>> listar() {
+        logger.info("Controller: Petición GET recibida en '/api/sucursales'");
         return ResponseEntity.ok(sucursalService.obtenerTodas());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarSucursal(@PathVariable Long id){
+        logger.info("Controller: Petición DELETE recibida para ID: {}", id);
         boolean eliminado = sucursalService.eliminarSucursal(id);
         if (eliminado){
             return ResponseEntity.noContent().build();
