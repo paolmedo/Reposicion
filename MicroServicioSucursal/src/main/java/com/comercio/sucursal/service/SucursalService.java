@@ -24,6 +24,7 @@ public class SucursalService {
         sucursal.setNombre(sucursalDTO.getNombre());
         sucursal.setDireccion(sucursalDTO.getDireccion());
         sucursal.setTelefono(sucursalDTO.getTelefono());
+        sucursal.setCiudad(sucursalDTO.getCiudad());
 
         Sucursal guardada = sucursalRepository.save(sucursal);
         logger.info("Service: Sucursal '{}' guardada exitosamente con ID: {}", guardada.getNombre(), guardada.getId());
