@@ -9,8 +9,8 @@ import lombok.Data;
 @Entity
 @Table(name = "sucursales")
 @Data
-
 public class Sucursal {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,5 +25,6 @@ public class Sucursal {
     @NotNull(message = "El teléfono no puede estar vacío.")
     private Integer telefono;
 
-
+    @NotBlank(message = "La ciudad no puede estar vacía.")
+    private String ciudad;
 }

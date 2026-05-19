@@ -20,11 +20,13 @@ public class DataLoader implements CommandLineRunner{
             s1.setNombre("Sucursal Viña del Mar");
             s1.setDireccion("Álvarez 123");
             s1.setTelefono(322114455);
+            s1.setCiudad("Viña del Mar");
 
             Sucursal s2 = new Sucursal();
             s2.setNombre("Sucursal Valparaíso");
             s2.setDireccion("Av. Brasil 456");
             s2.setTelefono(322667788);
+            s2.setCiudad("Valparaíso");
 
             sucursalRepository.save(s1);
             sucursalRepository.save(s2);
@@ -34,5 +36,4 @@ public class DataLoader implements CommandLineRunner{
             System.out.println("La tabla ya contiene estos datos, no se cargaron duplicados.");
         }
     }
-
 }
