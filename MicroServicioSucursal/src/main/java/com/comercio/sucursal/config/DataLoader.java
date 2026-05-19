@@ -2,7 +2,6 @@ package com.comercio.sucursal.config;
 
 import com.comercio.sucursal.model.Sucursal;
 import com.comercio.sucursal.repository.SucursalRepository;
-import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -14,7 +13,7 @@ public class DataLoader implements CommandLineRunner{
     private SucursalRepository sucursalRepository;
 
     @Override
-    public void run(String @NonNull ... args){
+    public void run(String... args){
 
         if (sucursalRepository.count() == 0){
             Sucursal s1 = new Sucursal();

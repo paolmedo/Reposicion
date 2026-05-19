@@ -2,6 +2,7 @@ package com.comercio.sucursal.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -21,8 +22,8 @@ public class Sucursal {
     @NotBlank(message = "La dirección no puede estar vacía.")
     private String direccion;
 
-    @NotBlank(message = "El teléfono no puede estar vacío.")
-    private int telefono;
+    @NotNull(message = "El teléfono no puede estar vacío.")
+    private Integer telefono;
 
 
 }
