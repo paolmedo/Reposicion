@@ -27,8 +27,6 @@ public class VentasDTO {
     @Min(value = 0, message = "El total no puede ser un monto negativo.")
     private Double total;
 
-    public VentasDTO() {}
-
     public VentasDTO(Long sucursalId, String producto, Integer cantidad, Double total) {
         this.sucursalId = sucursalId;
         this.producto = producto;

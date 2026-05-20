@@ -18,15 +18,15 @@ public class VentasService {
     @Autowired
     private VentasRepository ventaRepository;
 
-    public Ventas registrarVenta(VentasDTO ventaDTO) {
+    public Ventas registrarVenta(VentasDTO ventasDTO) {
         logger.info("Service: Procesando nueva venta del producto '{}' para la sucursal ID: {}",
-                ventaDTO.getProducto(), ventaDTO.getSucursalId());
+                ventasDTO.getProducto(), ventasDTO.getSucursalId());
 
         Ventas venta = new Ventas();
-        venta.setSucursalId(ventaDTO.getSucursalId());
-        venta.setProducto(ventaDTO.getProducto());
-        venta.setCantidad(ventaDTO.getCantidad());
-        venta.setTotal(ventaDTO.getTotal());
+        venta.setSucursalId(ventasDTO.getSucursalId());
+        venta.setProducto(ventasDTO.getProducto());
+        venta.setCantidad(ventasDTO.getCantidad());
+        venta.setTotal(ventasDTO.getTotal());
         venta.setFechaVenta(LocalDateTime.now());
 
         Ventas guardada = ventaRepository.save(venta);

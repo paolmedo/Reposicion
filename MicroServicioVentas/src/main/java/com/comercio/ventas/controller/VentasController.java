@@ -22,9 +22,9 @@ public class VentasController {
     private VentasService ventaService;
 
     @PostMapping
-    public ResponseEntity<Ventas> crearVenta(@Valid @RequestBody VentasDTO ventaDTO) {
+    public ResponseEntity<Ventas> crearVenta(@Valid @RequestBody VentasDTO ventasDTO) {
         logger.info("Controller: Solicitud POST recibida en '/api/ventas'");
-        Ventas nuevaVenta = ventaService.registrarVenta(ventaDTO);
+        Ventas nuevaVenta = ventaService.registrarVenta(ventasDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevaVenta);
     }
 
