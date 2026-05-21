@@ -23,8 +23,7 @@ public class TrabajadorService {
     }
     // Listar un trabajador en especifico
     public Trabajador listarUnSoloTrabajador(Long id){
-        Trabajador trabajadorExistente = trabajadorRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario no encontrado" + id));
-        return trabajadorExistente;
+        return trabajadorRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario no encontrado" + id));
     }
     // Actualizar trabajador
     public Trabajador actualizarTrabajador(Long id, Trabajador trabajadorActualizado){
@@ -38,7 +37,6 @@ public class TrabajadorService {
     }
     //Eliminar trabajador
     public void eliminarTrabajador(Long id){
-        Trabajador trabajadorExistente = trabajadorRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario no encontrado" + id));
         trabajadorRepository.deleteById(id);
     }
 }
