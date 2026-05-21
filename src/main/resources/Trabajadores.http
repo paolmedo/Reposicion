@@ -1,0 +1,33 @@
+### Crear trabajador
+POST localhost:8080/api/trabajadores
+Content-Type:application/json
+
+{
+  "id": 1,
+  "nombre": "Juan",
+  "rut": "13.847.507-8",
+  "edad": 25,
+  "correo": "estosi@gmail.com",
+  "rol": "reponedor"
+}
+
+### Listar trabajador
+GET localhost:8080/api/trabajadores
+
+### Actualizar trabajador
+PUT http://localhost:8080/api/trabajadores/
+Content-Type:application/json
+
+{
+  "nombre": "Javiera",
+  "rut": "21.584.308-4",
+  "edad": 22,
+  "correo": "soyuncorreo@gmail.com",
+  "rol": "reponedor"
+}
+
+### Eliminar el trabajador con ID
+DELETE http://localhost:8080/api/trabajadores/
+
+### trabajadores/"ID del trabajador" || para buscar todos los trabajadores NO pongas ID
+### ULTIMO USUARIO REGISTRADO QUEDO CON ID 4, NO EXISTE USUARIO CON ID 1 Y 2 PORQUE FUERON ELIMINADOS.
