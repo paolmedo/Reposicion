@@ -2,6 +2,7 @@ package PJfullstack.Reposicion.controller;
 
 import PJfullstack.Reposicion.entity.Trabajador;
 import PJfullstack.Reposicion.service.TrabajadorService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ public class TrabajadorController {
     private TrabajadorService trabajadorService;
    // Crear un trabajador
    @PostMapping
-   public ResponseEntity<Trabajador> crearTrabajador(@RequestBody Trabajador nuevoTrabajador){
+   public ResponseEntity<Trabajador> crearTrabajador(@RequestBody @Valid Trabajador nuevoTrabajador){
        return ResponseEntity.status(HttpStatus.CREATED).body(trabajadorService.guardarTrabajador(nuevoTrabajador));
    }
    // Listar TODOS los trabajadores registrados
@@ -31,7 +32,7 @@ public class TrabajadorController {
     }
    // Actualizar trabajador
     @PutMapping("/{id}")
-    public ResponseEntity<Trabajador> actualizarTrabajadores(@PathVariable Long id,@RequestBody Trabajador trabajadorActualizado ){
+    public ResponseEntity<Trabajador> actualizarTrabajadores(@PathVariable Long id,@RequestBody @Valid Trabajador trabajadorActualizado ){
        Trabajador trabajadorGuardado = trabajadorService.actualizarTrabajador(id,trabajadorActualizado );
     return ResponseEntity.ok(trabajadorGuardado);
     }
