@@ -1,5 +1,6 @@
 package PJfullstack.Reposicion.controller;
 
+import PJfullstack.Reposicion.dto.TurnoDTO;
 import PJfullstack.Reposicion.entity.TurnoTrabajador;
 import PJfullstack.Reposicion.service.TurnoService;
 import jakarta.validation.Valid;
@@ -18,8 +19,8 @@ public class TurnoController {
     private TurnoService turnoService;
     // Crear turno
     @PostMapping
-    public ResponseEntity<TurnoTrabajador> turnoCreado(@RequestBody @Valid TurnoTrabajador nuevoTurno){
-        return ResponseEntity.status(HttpStatus.CREATED).body(turnoService.crearTurno(nuevoTurno));
+    public ResponseEntity<TurnoTrabajador> turnoCreado(@RequestBody @Valid TurnoDTO turnoDTO){
+        return ResponseEntity.status(HttpStatus.CREATED).body(turnoService.crearTurno(turnoDTO));
     }
     // Listar turnos
     @GetMapping

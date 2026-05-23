@@ -1,6 +1,7 @@
 package PJfullstack.Reposicion.service;
 
 
+import PJfullstack.Reposicion.dto.TurnoDTO;
 import PJfullstack.Reposicion.entity.TurnoTrabajador;
 import PJfullstack.Reposicion.repository.TurnoRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -16,15 +17,20 @@ public class TurnoService {
     private TurnoRepository turnoRepository;
 
     // Crear turno con validaciones
-    public TurnoTrabajador crearTurno(TurnoTrabajador nuevoTurno){
-        log.info("Iniciando creacion de turno... Horario solicitado: {} - {}", nuevoTurno.getHoraInicio(), nuevoTurno.getHoraTermino());
-        if (nuevoTurno.getHoraTermino().isBefore(nuevoTurno.getHoraInicio()) ||
-            nuevoTurno.getHoraTermino().equals(nuevoTurno.getHoraInicio())){
-            log.warn("Se rechazo la creacion del turno: La hora de término ({}) es anterior o igual a la de inicio ({}) ", nuevoTurno.getHoraTermino(), nuevoTurno.getHoraInicio());
+    public TurnoTrabajador crearTurno(TurnoDTO turnoDTO){
+        log.info("Iniciando creacion de turno... Horario solicitado: {} - {}", turnoDTO.getHoraInicio(), turnoDTO.getHoraTermino());
+        if (turnoDTO.getHoraTermino().isBefore(turnoDTO.getHoraInicio()) ||
+            turnoDTO.getHoraTermino().equals(turnoDTO.getHoraInicio())){
+            log.warn("Se rechazo la creacion del turno: La hora de término ({}) es anterior o igual a la de inicio ({}) ", turnoDTO.getHoraTermino(), turnoDTO.getHoraInicio());
             throw  new RuntimeException("La hora de término no puede ser anterior o igual a la hora de inicio.");
         }
+        TurnoTrabajador nuevoTurno = new TurnoTrabajador();
+        nuevoTurno.setTipoTurno(turnoDTO.getTipoTurno());
+        nuevoTurno.setHoraInicio(turnoDTO.getHoraInicio());
+        nuevoTurno.setHoraTermino(turnoDTO.getHoraTermino());
+
         TurnoTrabajador guardado = turnoRepository.save(nuevoTurno);
-        log.info("Turno creado exitosamente en la base de datos con ID: {}", guardado.getId());
+        log.info("Turno creado exitosamente en la base de datos con ID: {}", guardado.getTipoTurno());
     return guardado;
     }
     // Listar turnos

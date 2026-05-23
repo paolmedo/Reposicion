@@ -1,5 +1,6 @@
 package PJfullstack.Reposicion.controller;
 
+import PJfullstack.Reposicion.dto.TrabajadorDTO;
 import PJfullstack.Reposicion.entity.Trabajador;
 import PJfullstack.Reposicion.service.TrabajadorService;
 import jakarta.validation.Valid;
@@ -17,8 +18,8 @@ public class TrabajadorController {
     private TrabajadorService trabajadorService;
    // Crear un trabajador
    @PostMapping
-   public ResponseEntity<Trabajador> crearTrabajador(@RequestBody @Valid Trabajador nuevoTrabajador){
-       return ResponseEntity.status(HttpStatus.CREATED).body(trabajadorService.guardarTrabajador(nuevoTrabajador));
+   public ResponseEntity<Trabajador> crearTrabajador(@RequestBody @Valid TrabajadorDTO trabajadorDTO){
+       return ResponseEntity.status(HttpStatus.CREATED).body(trabajadorService.guardarTrabajador(trabajadorDTO));
    }
    // Listar TODOS los trabajadores registrados
    @GetMapping
