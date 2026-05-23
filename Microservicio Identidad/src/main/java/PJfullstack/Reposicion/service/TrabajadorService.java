@@ -1,17 +1,24 @@
 package PJfullstack.Reposicion.service;
 
 import PJfullstack.Reposicion.entity.Trabajador;
+import PJfullstack.Reposicion.entity.TurnoTrabajador;
 import PJfullstack.Reposicion.repository.TrabajadorRepository;
+import PJfullstack.Reposicion.repository.TurnoRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 public class TrabajadorService {
 
     @Autowired
     private TrabajadorRepository trabajadorRepository;
+
+    @Autowired
+    private TurnoRepository turnoRepository;
 
     // Crear un trabajador
     public Trabajador guardarTrabajador(Trabajador nuevoTrabajador){
@@ -35,8 +42,16 @@ public class TrabajadorService {
         trabajadorExistente.setEdad(trabajadorActualizado.getEdad());
         return trabajadorRepository.save(trabajadorExistente);
     }
-    //Eliminar trabajador
+    // Eliminar trabajador
     public void eliminarTrabajador(Long id){
         trabajadorRepository.deleteById(id);
+    }
+    // Asignar turno a trabajador
+    public Trabajador asinarTurno(Long trabajadorId, Long turnoId){
+        log.info("Iniciando asignacion...Vinculo de  turno ID {} al trabajador con ID {}", turnoId, trabajadorId);
+        Trabajador trabajador = trabajadorRepository.findById(trabajadorId).orElseThrow(() -> new RuntimeException("Trabajador no encontrado con ID: " + trabajadorId));
+        TurnoTrabajador turno = turnoRepository.findById(turnoId).orElseThrow(() -> new RuntimeException("Turno no encontrado con ID: " + turnoId));
+        trabajador.setTurno(turno);
+        return trabajadorRepository.save(trabajador);
     }
 }
