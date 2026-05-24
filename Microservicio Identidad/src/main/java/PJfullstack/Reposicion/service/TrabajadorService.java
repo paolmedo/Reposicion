@@ -1,5 +1,6 @@
 package PJfullstack.Reposicion.service;
 
+import PJfullstack.Reposicion.dto.TrabajadorDTO;
 import PJfullstack.Reposicion.entity.Trabajador;
 import PJfullstack.Reposicion.entity.TurnoTrabajador;
 import PJfullstack.Reposicion.repository.TrabajadorRepository;
@@ -21,7 +22,17 @@ public class TrabajadorService {
     private TurnoRepository turnoRepository;
 
     // Crear un trabajador
-    public Trabajador guardarTrabajador(Trabajador nuevoTrabajador){
+    public Trabajador guardarTrabajador(TrabajadorDTO trabajadorDTO){
+        Trabajador nuevoTrabajador = new Trabajador();
+        nuevoTrabajador.setRut(trabajadorDTO.getRut());
+        nuevoTrabajador.setNombre(trabajadorDTO.getNombre());
+        nuevoTrabajador.setCorreo(trabajadorDTO.getCorreo());
+        nuevoTrabajador.setRol(trabajadorDTO.getRol());
+        nuevoTrabajador.setEdad(trabajadorDTO.getEdad());
+        if (trabajadorDTO.getTurnoId() != null){
+            TurnoTrabajador turno = turnoRepository.findById(trabajadorDTO.getTurnoId()).orElseThrow(() -> new RuntimeException("Turno no encontrado con ID" + trabajadorDTO.getTurnoId()));
+            nuevoTrabajador.setTurno(turno);
+        }
         return trabajadorRepository.save(nuevoTrabajador);
     }
     // Listar TODOS los trabajadores registrados
