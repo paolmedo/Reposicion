@@ -1,0 +1,12 @@
+
+POST http://localhost:8080/api/trabajadores
+Content-Type: application/json
+
+{
+  "rut": "12345678-9",
+  "nombre": "Juan Perez",
+  "correo": "juan@correo.com",
+  "rol": "Vendedor",
+  "edad": 30
+}
+###
