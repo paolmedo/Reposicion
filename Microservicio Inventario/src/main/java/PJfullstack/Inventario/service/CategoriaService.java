@@ -26,15 +26,17 @@ public class CategoriaService {
     }
     // Listar categorias
     public List<Categoria> listarCategorias(){
+        log.debug("Iniciando busqueda de todas las categorias");
         return categoriaRepository.findAll();
     }
     // Listar una categoria
     public Categoria listarUnaCategoria(Long id){
+        log.debug("Iniciando busqueda de categoria con ID {}", id);
         return categoriaRepository.findById(id).orElseThrow(() -> new RuntimeException("Categoria no encontrada por el ID" + id));
     }
     // Actualizar una categoria
     public Categoria actualizarUnaCategoria(Long id,CategoriaDTO categoriaDTO){
-        log.info("Modificar una categoria con ID{}", id);
+        log.info("Modificar una categoria con ID {}", id);
         Categoria categoriaExistente = categoriaRepository.findById(id).orElseThrow(() -> new RuntimeException("Categoria no encontrada por ID" + id));
         categoriaExistente.setNombreCategoria(categoriaDTO.getNombreCategoria());
         categoriaExistente.setDescripcionCategoria(categoriaDTO.getDescripcionCategoria());

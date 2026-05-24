@@ -46,7 +46,7 @@ public class TrabajadorController {
     // Asignar turno a trabajador
     @PutMapping("/{trabajadorId}/turno/{turnoId}")
     public ResponseEntity<Trabajador> asignarTurnoTrabajador(@PathVariable Long trabajadorId, @PathVariable Long turnoId){
-       Trabajador trabajadorActualizado = trabajadorService.asinarTurno(trabajadorId, turnoId);
+       Trabajador trabajadorActualizado = trabajadorService.asignarTurno(trabajadorId, turnoId);
        return ResponseEntity.ok(trabajadorActualizado);
     }
 }
