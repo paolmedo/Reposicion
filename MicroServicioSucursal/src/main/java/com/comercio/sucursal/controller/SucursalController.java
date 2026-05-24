@@ -27,6 +27,17 @@ public class SucursalController {
         Sucursal nueva = sucursalService.guardarSucursal(sucursalDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(nueva);
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Sucursal> actualizar(@PathVariable Long id, @Valid @RequestBody SucursalDTO sucursalDTO) {
+        logger.info("Controller: Petición PUT recibida para actualizar ID: {}", id);
+        Sucursal actualizada = sucursalService.actualizarSucursal(id, sucursalDTO);
+
+        if (actualizada != null) {
+            return ResponseEntity.ok(actualizada);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @GetMapping
     public ResponseEntity<List<Sucursal>> listar() {

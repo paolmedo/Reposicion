@@ -35,9 +35,9 @@ public class DataLoader implements CommandLineRunner {
             ventaRepository.save(v1);
             ventaRepository.save(v2);
 
-            System.out.println("Datos de prueba de ventas cargados exitosamente.");
+            System.out.println("Los datos de prueba han sido cargados exitosamente.");
         } else {
-            System.out.println("La tabla de ventas ya contiene datos, omitiendo carga inicial.");
+            System.out.println("La tabla ya contiene estos datos, no se cargaron duplicados.");
         }
     }
 }

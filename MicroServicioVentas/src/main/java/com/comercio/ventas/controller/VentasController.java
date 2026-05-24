@@ -33,4 +33,27 @@ public class VentasController {
         logger.info("Controller: Solicitud GET recibida en '/api/ventas'");
         return ResponseEntity.ok(ventaService.listarTodas());
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Ventas> actualizarVenta(@PathVariable Long id, @Valid @RequestBody VentasDTO ventasDTO) {
+        logger.info("Controller: Petición PUT recibida para actualizar venta ID: {}", id);
+        Ventas actualizada = ventaService.actualizarVenta(id, ventasDTO);
+
+        if (actualizada != null) {
+            return ResponseEntity.ok(actualizada);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarVenta(@PathVariable Long id) {
+        logger.info("Controller: Petición DELETE recibida para venta ID: {}", id);
+        boolean eliminado = ventaService.eliminarVenta(id);
+
+        if (eliminado) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

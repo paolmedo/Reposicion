@@ -30,6 +30,23 @@ public class SucursalService {
         logger.info("Service: Sucursal '{}' guardada exitosamente con ID: {}", guardada.getNombre(), guardada.getId());
         return guardada;
     }
+    public Sucursal actualizarSucursal(Long id, SucursalDTO sucursalDTO) {
+        logger.info("Service: Intentando actualizar sucursal con ID: {}", id);
+
+        return sucursalRepository.findById(id).map(sucursalExistente -> {
+            sucursalExistente.setNombre(sucursalDTO.getNombre());
+            sucursalExistente.setDireccion(sucursalDTO.getDireccion());
+            sucursalExistente.setTelefono(sucursalDTO.getTelefono());
+            sucursalExistente.setCiudad(sucursalDTO.getCiudad());
+
+            Sucursal actualizada = sucursalRepository.save(sucursalExistente);
+            logger.info("Service: Sucursal con ID: {} actualizada exitosamente.", id);
+            return actualizada;
+        }).orElseGet(() -> {
+            logger.warn("Service: No se pudo actualizar. No existe sucursal con ID: {}", id);
+            return null;
+        });
+    }
 
     public List<Sucursal> obtenerTodas(){
         logger.info("Service: Consultando el listado total de sucursales en la base de datos.");
