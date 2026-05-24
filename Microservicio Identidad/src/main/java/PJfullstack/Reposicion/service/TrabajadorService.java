@@ -23,6 +23,7 @@ public class TrabajadorService {
 
     // Crear un trabajador
     public Trabajador guardarTrabajador(TrabajadorDTO trabajadorDTO){
+        log.info("Iniciando creación de nuevo trabajador con RUT {}", trabajadorDTO.getRut());
         Trabajador nuevoTrabajador = new Trabajador();
         nuevoTrabajador.setRut(trabajadorDTO.getRut());
         nuevoTrabajador.setNombre(trabajadorDTO.getNombre());
@@ -36,15 +37,18 @@ public class TrabajadorService {
         return trabajadorRepository.save(nuevoTrabajador);
     }
     // Listar TODOS los trabajadores registrados
-    public  List<Trabajador> listarTodosTrabajadores(){
+    public  List<Trabajador> listarTodosTrabajadores() {
+        log.debug("Iniciando busqueda de todos los trabajadores");
         return trabajadorRepository.findAll();
     }
     // Listar un trabajador en especifico
     public Trabajador listarUnSoloTrabajador(Long id){
+        log.debug("Inicando busqueda de trabajador con ID {}", id);
         return trabajadorRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario no encontrado" + id));
     }
     // Actualizar trabajador
     public Trabajador actualizarTrabajador(Long id, Trabajador trabajadorActualizado){
+        log.info("Iniciando actualizacion de trabajador con ID {}", id);
         Trabajador trabajadorExistente = trabajadorRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario no encontrado" + id));
         trabajadorExistente.setRut(trabajadorActualizado.getRut());
         trabajadorExistente.setNombre(trabajadorActualizado.getNombre());
@@ -55,11 +59,12 @@ public class TrabajadorService {
     }
     // Eliminar trabajador
     public void eliminarTrabajador(Long id){
+        log.info("Iniciando eliminacion de trabajador con ID {}", id);
         trabajadorRepository.deleteById(id);
     }
     // Asignar turno a trabajador
-    public Trabajador asinarTurno(Long trabajadorId, Long turnoId){
-        log.info("Iniciando asignacion...Vinculo de  turno ID {} al trabajador con ID {}", turnoId, trabajadorId);
+    public Trabajador asignarTurno(Long trabajadorId, Long turnoId){
+        log.info("Iniciando asignacion vinculo de  turno ID {} al trabajador con ID {}", turnoId, trabajadorId);
         Trabajador trabajador = trabajadorRepository.findById(trabajadorId).orElseThrow(() -> new RuntimeException("Trabajador no encontrado con ID: " + trabajadorId));
         TurnoTrabajador turno = turnoRepository.findById(turnoId).orElseThrow(() -> new RuntimeException("Turno no encontrado con ID: " + turnoId));
         trabajador.setTurno(turno);

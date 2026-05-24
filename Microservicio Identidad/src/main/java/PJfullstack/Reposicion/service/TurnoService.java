@@ -35,14 +35,17 @@ public class TurnoService {
     }
     // Listar turnos
     public List<TurnoTrabajador> listarTodosTurnos(){
+        log.debug("Iniciando busqueda de todos los turnos");
         return turnoRepository.findAll();
     }
     // Listar un turno en especifico
     public TurnoTrabajador listarUnSoloTurno(Long id){
+        log.debug("Iniciando busqueda de turno con ID {}", id);
         return turnoRepository.findById(id).orElseThrow(() -> new RuntimeException("Turno no encontrado" + id));
     }
     // Actualizar turno
     public TurnoTrabajador actualizarTurno(Long id, TurnoTrabajador turnoTrabajadorActualizado){
+        log.info("Iniciando actualizacion actualizacion de turno con ID {}", id);
         TurnoTrabajador turnoExistente = turnoRepository.findById(id).orElseThrow(() -> new RuntimeException("Turno no encontrado" + id));
         turnoExistente.setTipoTurno(turnoTrabajadorActualizado.getTipoTurno());
         turnoExistente.setHoraInicio(turnoTrabajadorActualizado.getHoraInicio());
@@ -51,6 +54,7 @@ public class TurnoService {
     }
     // Eliminar turno
     public void eliminarTurno(Long id){
+        log.info("Iniciando eliminacion de turno con ID {}", id);
         turnoRepository.deleteById(id);
     }
 }

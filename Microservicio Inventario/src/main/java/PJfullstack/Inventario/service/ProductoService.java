@@ -23,6 +23,7 @@ public class ProductoService {
 
     // Crear producto
     public Producto crearProducto(ProductoDTO productoDTO) {
+        log.info("Iniciando creacion de un nuevo producto con codigo de barra {}", productoDTO.getCodigoBarra());
         Producto productoNuevo = new Producto();
         productoNuevo.setCodigoBarra(productoDTO.getCodigoBarra());
         productoNuevo.setNombreProducto(productoDTO.getNombreProducto());
@@ -39,11 +40,13 @@ public class ProductoService {
 
     // listar todos los productos
     public List<Producto> listarTodosProducto() {
+        log.debug("Iniciando busqueda de todos los productos");
         return productoRepository.findAll();
     }
 
     // Listar un producto en especifico
     public Producto listarUnSoloProducto(Long id){
+        log.debug("Iniciando busqueda de producto con ID {}", id);
         return productoRepository.findById(id).orElseThrow(() -> new RuntimeException("Producto no encontrado" + id));
     }
 
@@ -68,6 +71,7 @@ public class ProductoService {
 
     // Eliminar producto
     public void eliminarProducto(Long id){
+        log.info("Iniciando eliminacion de producto con ID {}", id);
         productoRepository.deleteById(id);
     }
 }
