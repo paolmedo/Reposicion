@@ -44,6 +44,15 @@ public class SucursalController {
         logger.info("Controller: Petición GET recibida en '/api/sucursales'");
         return ResponseEntity.ok(sucursalService.obtenerTodas());
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Sucursal> obtenerPorId(@PathVariable Long id) {
+        logger.info("Controller: Buscando sucursal ID: {}", id);
+        Sucursal sucursal = sucursalService.obtenerPorId(id);
+        if (sucursal != null) {
+            return ResponseEntity.ok(sucursal);
+        }
+        return ResponseEntity.notFound().build();
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarSucursal(@PathVariable Long id){

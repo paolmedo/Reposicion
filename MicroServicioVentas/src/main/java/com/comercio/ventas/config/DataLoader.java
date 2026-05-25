@@ -2,7 +2,6 @@ package com.comercio.ventas.config;
 
 import com.comercio.ventas.model.Ventas;
 import com.comercio.ventas.repository.VentasRepository;
-import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -15,7 +14,7 @@ public class DataLoader implements CommandLineRunner {
     private VentasRepository ventaRepository;
 
     @Override
-    public void run(String @NonNull ... args) {
+    public void run(String ... args) {
         if (ventaRepository.count() == 0) {
 
             Ventas v1 = new Ventas();

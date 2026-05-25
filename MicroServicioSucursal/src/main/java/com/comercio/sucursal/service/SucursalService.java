@@ -63,4 +63,9 @@ public class SucursalService {
         logger.warn("Service: No se pudo eliminar. No existe sucursal con ID: {}", id);
         return false;
     }
+    public Sucursal obtenerPorId(Long id) {
+        logger.info("Service: Buscando sucursal ID: {}", id);
+        return sucursalRepository.findById(id)
+                .orElse(null);
+    }
 }
