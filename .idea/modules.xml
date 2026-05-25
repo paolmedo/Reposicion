@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Microservicio Inventario/Inventario.iml" filepath="$PROJECT_DIR$/Microservicio Inventario/Inventario.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Reposicion.iml" filepath="$PROJECT_DIR$/Reposicion.iml" />
     </modules>
   </component>
 </project>
