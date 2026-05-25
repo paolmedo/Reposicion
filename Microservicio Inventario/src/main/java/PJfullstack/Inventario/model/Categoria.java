@@ -1,4 +1,4 @@
-package PJfullstack.Inventario.entity;
+package PJfullstack.Inventario.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

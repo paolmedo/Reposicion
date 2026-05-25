@@ -1,6 +1,6 @@
 package PJfullstack.Reposicion.repository;
 
-import PJfullstack.Reposicion.entity.TurnoTrabajador;
+import PJfullstack.Reposicion.model.TurnoTrabajador;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

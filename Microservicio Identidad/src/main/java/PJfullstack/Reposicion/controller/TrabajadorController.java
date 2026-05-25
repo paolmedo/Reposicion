@@ -1,7 +1,7 @@
 package PJfullstack.Reposicion.controller;
 
 import PJfullstack.Reposicion.dto.TrabajadorDTO;
-import PJfullstack.Reposicion.entity.Trabajador;
+import PJfullstack.Reposicion.model.Trabajador;
 import PJfullstack.Reposicion.service.TrabajadorService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

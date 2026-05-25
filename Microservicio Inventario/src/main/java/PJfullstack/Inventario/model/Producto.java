@@ -1,4 +1,4 @@
-package PJfullstack.Inventario.entity;
+package PJfullstack.Inventario.model;
 
 
 import jakarta.persistence.*;

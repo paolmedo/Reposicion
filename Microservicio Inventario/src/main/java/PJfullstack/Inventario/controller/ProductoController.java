@@ -1,7 +1,7 @@
 package PJfullstack.Inventario.controller;
 
 import PJfullstack.Inventario.dto.ProductoDTO;
-import PJfullstack.Inventario.entity.Producto;
+import PJfullstack.Inventario.model.Producto;
 import PJfullstack.Inventario.service.ProductoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

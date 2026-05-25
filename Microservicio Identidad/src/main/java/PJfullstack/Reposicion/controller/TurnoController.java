@@ -1,7 +1,7 @@
 package PJfullstack.Reposicion.controller;
 
 import PJfullstack.Reposicion.dto.TurnoDTO;
-import PJfullstack.Reposicion.entity.TurnoTrabajador;
+import PJfullstack.Reposicion.model.TurnoTrabajador;
 import PJfullstack.Reposicion.service.TurnoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

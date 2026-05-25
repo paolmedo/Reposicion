@@ -1,8 +1,8 @@
 package PJfullstack.Reposicion.service;
 
 import PJfullstack.Reposicion.dto.TrabajadorDTO;
-import PJfullstack.Reposicion.entity.Trabajador;
-import PJfullstack.Reposicion.entity.TurnoTrabajador;
+import PJfullstack.Reposicion.model.Trabajador;
+import PJfullstack.Reposicion.model.TurnoTrabajador;
 import PJfullstack.Reposicion.repository.TrabajadorRepository;
 import PJfullstack.Reposicion.repository.TurnoRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -41,7 +41,7 @@ public class TrabajadorService {
         log.debug("Iniciando busqueda de todos los trabajadores");
         return trabajadorRepository.findAll();
     }
-    // Listar un trabajador en especifico
+    // Listar un trabajador en específico
     public Trabajador listarUnSoloTrabajador(Long id){
         log.debug("Inicando busqueda de trabajador con ID {}", id);
         return trabajadorRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario no encontrado" + id));

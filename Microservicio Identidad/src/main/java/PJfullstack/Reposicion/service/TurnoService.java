@@ -2,7 +2,7 @@ package PJfullstack.Reposicion.service;
 
 
 import PJfullstack.Reposicion.dto.TurnoDTO;
-import PJfullstack.Reposicion.entity.TurnoTrabajador;
+import PJfullstack.Reposicion.model.TurnoTrabajador;
 import PJfullstack.Reposicion.repository.TurnoRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

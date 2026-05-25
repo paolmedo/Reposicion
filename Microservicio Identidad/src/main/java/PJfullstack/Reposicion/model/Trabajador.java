@@ -1,4 +1,4 @@
-package PJfullstack.Reposicion.entity;
+package PJfullstack.Reposicion.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;

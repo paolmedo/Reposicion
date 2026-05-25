@@ -1,8 +1,8 @@
 package PJfullstack.Inventario.service;
 
 import PJfullstack.Inventario.dto.ProductoDTO;
-import PJfullstack.Inventario.entity.Categoria;
-import PJfullstack.Inventario.entity.Producto;
+import PJfullstack.Inventario.model.Categoria;
+import PJfullstack.Inventario.model.Producto;
 import PJfullstack.Inventario.repository.CategoriaRepository;
 import PJfullstack.Inventario.repository.ProductoRepository;
 import lombok.extern.slf4j.Slf4j;
