@@ -12,5 +12,8 @@
       </list>
     </option>
   </component>
+  <component name="ProjectResources">
+    <resource url="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" location="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="ms-21" project-jdk-type="JavaSDK" />
 </project>
