@@ -38,6 +38,6 @@ public class Trabajador {
     private int edad;
 
     @ManyToOne
-    @JoinColumn(name = "turno_id", nullable = true)
+    @JoinColumn(name = "turno_id")
     private TurnoTrabajador turno;
 }
