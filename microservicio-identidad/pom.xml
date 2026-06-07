@@ -14,7 +14,7 @@
 	<!-- Coordenada -->
 	<groupId>com.reposicion</groupId>
 	<artifactId>microservicio-identidad</artifactId>
-	<version>0.1.1-SNAPSHOT</version>
+	<version>0.1.2-SNAPSHOT</version>
 	<name>Identidad</name>
 	<description>Microservicio de Identidad</description>
 

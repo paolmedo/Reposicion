@@ -14,7 +14,7 @@
 	<!-- Coordenada -->
 	<groupId>com.reposicion</groupId>
 	<artifactId>microservicio-inventario</artifactId>
-	<version>0.1.1-SNAPSHOT</version>
+	<version>0.1.2-SNAPSHOT</version>
 	<name>Inventario</name>
 	<description>Microservicio de Inventario</description>
 
