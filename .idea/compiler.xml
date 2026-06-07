@@ -7,27 +7,32 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Reposicion" />
         <module name="MicroServicioSucursal" />
+        <module name="microservicio-identidad" />
         <module name="Inventario" />
       </profile>
-      <profile name="Annotation profile for MicroServicioVentas" enabled="true">
+      <profile name="Annotation profile for Ventas" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
         <module name="MicroServicioVentas" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Identidad" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Identidad" options="-parameters" />
       <module name="Inventario" options="-parameters" />
       <module name="MicroServicioSucursal" options="-parameters" />
       <module name="MicroServicioVentas" options="-parameters" />
-      <module name="Reposicion" options="-parameters" />
+      <module name="microservicio-identidad" options="-parameters" />
     </option>
   </component>
 </project>
