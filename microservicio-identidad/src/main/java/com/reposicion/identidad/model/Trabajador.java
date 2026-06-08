@@ -25,7 +25,7 @@ public class Trabajador {
 
     @NotBlank
     @Email
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String correo;
 
     @NotBlank
@@ -33,7 +33,7 @@ public class Trabajador {
     private String rol;
 
     @Min(value = 18, message = "La edad debe ser mayor a 18 años. ")
-    @Max(value = 120, message = "La edad debe ser menor a 120 años. ")
+    @Max(value = 90, message = "La edad debe ser menor a 90 años. ")
     @Column(nullable = false)
     private int edad;
 

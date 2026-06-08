@@ -14,7 +14,7 @@ public class SwaggerConfig {
         return new OpenAPI()
                 .info(new Info()
                         .title("API 2026 INVENTARIO")
-                        .version("1.2.0")
+                        .version("1.1.0")
                         .description("Documentacion de API INVENTARIO para el sistema REPOSICION"));
     }
 }
