@@ -25,12 +25,7 @@ public class GlobalException {
         RespuestaError error = new RespuestaError(excep.getMessage(), 404, LocalDateTime.now());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
-    // ERROR 409 CONFLICT
-    @ExceptionHandler(ExceptionConflict.class)
-    public ResponseEntity<RespuestaError> manejoDuplicado(ExceptionConflict excep){
-        RespuestaError error = new RespuestaError(excep.getMessage(), 409, LocalDateTime.now());
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
-    }
+
 
     // ERROR 500 INTERNAL SERVER ERROR
     @ExceptionHandler(Exception.class)

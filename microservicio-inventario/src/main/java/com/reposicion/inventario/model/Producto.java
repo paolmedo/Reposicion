@@ -18,7 +18,7 @@ public class Producto {
 
     @NotBlank
     @Column(unique = true, nullable = false)
-    private String CodigoBarra;
+    private String codigoBarra;
 
     @NotBlank
     @Column(nullable = false)
