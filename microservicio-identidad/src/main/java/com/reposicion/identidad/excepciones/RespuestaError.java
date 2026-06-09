@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RespuestaError {
- private String mensaje;
- private Integer codigoHttp;
- private LocalDateTime fechaError;
+    private String mensaje;
+    private Integer codigoHttp;
+    private LocalDateTime fechaError;
 
 
 }
