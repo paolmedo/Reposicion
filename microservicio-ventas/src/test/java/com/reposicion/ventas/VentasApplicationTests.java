@@ -67,22 +67,29 @@ class VentasServiceTest {
         verify(ventasRepository, times(1)).save(any(Ventas.class));
     }
     void eliminarVenta_Exito() {
-        // Given (Venta existente activa)
         Ventas ventaActiva = new Ventas();
         ventaActiva.setId(1L);
         ventaActiva.setEstado("ACTIVA");
 
-        // Simulamos que la BD encuentra la venta
         when(ventasRepository.findById(1L)).thenReturn(java.util.Optional.of(ventaActiva));
         when(ventasRepository.save(any(Ventas.class))).thenReturn(ventaActiva);
 
-        // When (Intentar eliminar)
         boolean resultado = ventasService.eliminarVenta(1L);
 
-        // Then (Verificar anulación lógica)
         assertTrue(resultado);
         assertEquals("ANULADA", ventaActiva.getEstado());
         verify(ventasRepository, times(1)).findById(1L);
         verify(ventasRepository, times(1)).save(ventaActiva);
+    }
+    void eliminarVenta_NoExiste() {
+        // Simulamos que la base de datos no encuentra el ID 99
+        when(ventasRepository.findById(99L)).thenReturn(java.util.Optional.empty());
+
+        // Ejecutamos
+        boolean resultado = ventasService.eliminarVenta(99L);
+
+        // Verificamos que retorna false y nunca intenta guardar nada
+        assertFalse(resultado);
+        verify(ventasRepository, never()).save(any(Ventas.class));
     }
 }

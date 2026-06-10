@@ -7,25 +7,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="api-gateway" />
         <module name="microservicio-sucursal" />
-      </profile>
-      <profile name="Annotation profile for Ventas" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
-        </processorPath>
+        <module name="eureka-server" />
+        <module name="microservicio-identidad" />
         <module name="microservicio-ventas" />
+        <module name="microservicio-inventario" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="microservicio-identidad" target="21" />
-      <module name="microservicio-inventario" target="21" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-gateway" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
+      <module name="microservicio-identidad" options="-parameters" />
+      <module name="microservicio-inventario" options="-parameters" />
       <module name="microservicio-sucursal" options="-parameters" />
       <module name="microservicio-ventas" options="-parameters" />
     </option>

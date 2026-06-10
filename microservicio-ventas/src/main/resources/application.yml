@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: Ventas
+    name: Ventas-Service
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/ventas_bd
     username: root
@@ -14,7 +14,12 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+      instance:
+        prefer-ip-address: true
 springdoc:
   api-docs:
     enabled: true
