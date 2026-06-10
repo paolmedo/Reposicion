@@ -17,8 +17,8 @@ public class Producto {
     private Long id;
 
     @NotBlank
-    @Column(nullable = false)
-    private String CodigoBarra;
+    @Column(unique = true, nullable = false)
+    private String codigoBarra;
 
     @NotBlank
     @Column(nullable = false)

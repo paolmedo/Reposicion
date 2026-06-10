@@ -1,29 +1,34 @@
 package com.reposicion.identidad.service;
 
 import com.reposicion.identidad.dto.TrabajadorDTO;
+import com.reposicion.identidad.excepciones.ExceptionConflict;
 import com.reposicion.identidad.model.Trabajador;
 import com.reposicion.identidad.model.TurnoTrabajador;
 import com.reposicion.identidad.repository.TrabajadorRepository;
 import com.reposicion.identidad.repository.TurnoRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class TrabajadorService {
 
-    @Autowired
-    private TrabajadorRepository trabajadorRepository;
-
-    @Autowired
-    private TurnoRepository turnoRepository;
+    private final TrabajadorRepository trabajadorRepository;
+    private final TurnoRepository turnoRepository;
 
     // Crear un trabajador
     public Trabajador guardarTrabajador(TrabajadorDTO trabajadorDTO){
         log.info("Iniciando creación de nuevo trabajador con RUT {}", trabajadorDTO.getRut());
+        if (trabajadorRepository.existsByRut(trabajadorDTO.getRut())){
+            throw new ExceptionConflict("El RUT '" + trabajadorDTO.getRut() + "' Ya pertenece a un trabajador registrado.");
+        }
+        if (trabajadorRepository.existsByCorreo(trabajadorDTO.getCorreo())){
+            throw new ExceptionConflict("El CORREO '" + trabajadorDTO.getCorreo() + "' Ya pertenece a un trabajador registrado.");
+        }
         Trabajador nuevoTrabajador = new Trabajador();
         nuevoTrabajador.setRut(trabajadorDTO.getRut());
         nuevoTrabajador.setNombre(trabajadorDTO.getNombre());
@@ -31,7 +36,7 @@ public class TrabajadorService {
         nuevoTrabajador.setRol(trabajadorDTO.getRol());
         nuevoTrabajador.setEdad(trabajadorDTO.getEdad());
         if (trabajadorDTO.getTurnoId() != null){
-            TurnoTrabajador turno = turnoRepository.findById(trabajadorDTO.getTurnoId()).orElseThrow(() -> new RuntimeException("Turno no encontrado con ID" + trabajadorDTO.getTurnoId()));
+            TurnoTrabajador turno = turnoRepository.findById(trabajadorDTO.getTurnoId()).orElseThrow(() -> new RuntimeException("Turno no encontrado con ID: " + trabajadorDTO.getTurnoId()));
             nuevoTrabajador.setTurno(turno);
         }
         return trabajadorRepository.save(nuevoTrabajador);
@@ -44,22 +49,33 @@ public class TrabajadorService {
     // Listar un trabajador en específico
     public Trabajador listarUnSoloTrabajador(Long id){
         log.debug("Inicando busqueda de trabajador con ID {}", id);
-        return trabajadorRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario no encontrado" + id));
+        return trabajadorRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario no encontrado con id: " + id));
     }
     // Actualizar trabajador
-    public Trabajador actualizarTrabajador(Long id, Trabajador trabajadorActualizado){
+    public Trabajador actualizarTrabajador(Long id, TrabajadorDTO trabajadorDTO){
         log.info("Iniciando actualizacion de trabajador con ID {}", id);
-        Trabajador trabajadorExistente = trabajadorRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario no encontrado" + id));
-        trabajadorExistente.setRut(trabajadorActualizado.getRut());
-        trabajadorExistente.setNombre(trabajadorActualizado.getNombre());
-        trabajadorExistente.setCorreo(trabajadorActualizado.getCorreo());
-        trabajadorExistente.setRol(trabajadorActualizado.getRol());
-        trabajadorExistente.setEdad(trabajadorActualizado.getEdad());
+        Trabajador trabajadorExistente = trabajadorRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario no encontrado con id: " + id));
+        if(trabajadorRepository.existsByRut(trabajadorDTO.getRut())
+        && !trabajadorExistente.getRut().equals(trabajadorDTO.getRut())){
+            throw new ExceptionConflict("El RUT '" + trabajadorDTO.getRut() + "' ya pertenece a otro trabajador registrado.");
+        }
+        if (trabajadorRepository.existsByCorreo(trabajadorDTO.getCorreo())
+        && !trabajadorExistente.getCorreo().equals(trabajadorDTO.getCorreo())){
+            throw new ExceptionConflict("El CORREO '" + trabajadorDTO.getCorreo() + "' ya pertenece a otro trabajador registrado.");
+        }
+        trabajadorExistente.setRut(trabajadorDTO.getRut());
+        trabajadorExistente.setNombre(trabajadorDTO.getNombre());
+        trabajadorExistente.setCorreo(trabajadorDTO.getCorreo());
+        trabajadorExistente.setRol(trabajadorDTO.getRol());
+        trabajadorExistente.setEdad(trabajadorDTO.getEdad());
         return trabajadorRepository.save(trabajadorExistente);
     }
     // Eliminar trabajador
     public void eliminarTrabajador(Long id){
         log.info("Iniciando eliminacion de trabajador con ID {}", id);
+        if (!trabajadorRepository.existsById(id)) {
+            throw new RuntimeException("Usuario no encontrado con ID: " + id);
+        }
         trabajadorRepository.deleteById(id);
     }
     // Asignar turno a trabajador

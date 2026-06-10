@@ -14,7 +14,7 @@ public class SwaggerConfig {
         return new OpenAPI()
                 .info(new Info()
                         .title("API 2026 IDENTIDAD")
-                        .version("1.1")
+                        .version("1.1.0")
                         .description("Documentacion de API IDENTIDAD para el sistema REPOSICION"));
     }
 }

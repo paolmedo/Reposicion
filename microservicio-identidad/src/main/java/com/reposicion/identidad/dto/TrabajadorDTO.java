@@ -22,7 +22,7 @@ public class TrabajadorDTO {
     private String rol;
 
     @Min(value = 18, message = "La edad debe ser mayor a 18 años ")
-    @Max(value = 120, message = "La edad debe ser menor a 120 años ")
+    @Max(value = 90, message = "La edad debe ser menor a 90 años ")
     private int edad;
     private Long turnoId;
 }

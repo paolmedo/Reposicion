@@ -1,6 +1,7 @@
 package com.reposicion.identidad.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -13,10 +14,12 @@ public class TurnoDTO {
     private String tipoTurno;
 
     @JsonFormat(pattern = "HH:mm:ss")
+    @Schema(type = "string", pattern = "HH:mm:ss", example = "07:30:00")
     @NotNull(message = "La hora de inicio es obligatoria")
     private LocalTime horaInicio;
 
     @JsonFormat(pattern = "HH:mm:ss")
+    @Schema(type = "string", pattern = "HH:mm:ss", example = "15:30:00")
     @NotNull(message = "La hora de termino es obligatoria")
     private LocalTime horaTermino;
 }
