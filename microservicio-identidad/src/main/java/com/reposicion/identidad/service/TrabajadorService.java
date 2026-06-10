@@ -24,10 +24,10 @@ public class TrabajadorService {
     public Trabajador guardarTrabajador(TrabajadorDTO trabajadorDTO){
         log.info("Iniciando creación de nuevo trabajador con RUT {}", trabajadorDTO.getRut());
         if (trabajadorRepository.existsByRut(trabajadorDTO.getRut())){
-            throw new ExceptionConflict("El RUT " + trabajadorDTO.getRut() + " Ya pertenece a un trabajador registrado.");
+            throw new ExceptionConflict("El RUT '" + trabajadorDTO.getRut() + "' Ya pertenece a un trabajador registrado.");
         }
         if (trabajadorRepository.existsByCorreo(trabajadorDTO.getCorreo())){
-            throw new ExceptionConflict("El CORREO " + trabajadorDTO.getCorreo() + " Ya pertenece a un trabajador registrado.");
+            throw new ExceptionConflict("El CORREO '" + trabajadorDTO.getCorreo() + "' Ya pertenece a un trabajador registrado.");
         }
         Trabajador nuevoTrabajador = new Trabajador();
         nuevoTrabajador.setRut(trabajadorDTO.getRut());
@@ -57,11 +57,11 @@ public class TrabajadorService {
         Trabajador trabajadorExistente = trabajadorRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario no encontrado con id: " + id));
         if(trabajadorRepository.existsByRut(trabajadorDTO.getRut())
         && !trabajadorExistente.getRut().equals(trabajadorDTO.getRut())){
-            throw new ExceptionConflict("El RUT " + trabajadorDTO.getRut() + " ya pertenece a otro trabajador registrado.");
+            throw new ExceptionConflict("El RUT '" + trabajadorDTO.getRut() + "' ya pertenece a otro trabajador registrado.");
         }
         if (trabajadorRepository.existsByCorreo(trabajadorDTO.getCorreo())
         && !trabajadorExistente.getCorreo().equals(trabajadorDTO.getCorreo())){
-            throw new ExceptionConflict("El CORREO " + trabajadorDTO.getCorreo() + " ya pertenece a otro trabajador registrado.");
+            throw new ExceptionConflict("El CORREO '" + trabajadorDTO.getCorreo() + "' ya pertenece a otro trabajador registrado.");
         }
         trabajadorExistente.setRut(trabajadorDTO.getRut());
         trabajadorExistente.setNombre(trabajadorDTO.getNombre());

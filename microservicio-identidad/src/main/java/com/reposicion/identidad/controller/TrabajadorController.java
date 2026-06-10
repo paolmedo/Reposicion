@@ -116,7 +116,7 @@ public class TrabajadorController {
 
     // Asignar turno a trabajador
     @PutMapping("/{trabajadorId}/turno/{turnoId}")
-    @Operation(summary = "Asignar un turno", description = "Asignar un turno a un trabajador. Se necesita el ID del turno y el ID del trabajador.")
+    @Operation(summary = "Cambiar un turno", description = "Cambiar un turno a un trabajador. Se necesita el ID del turno y el ID del trabajador.")
     @ApiResponses(value ={
             @ApiResponse(responseCode = "200", description = "Turno asignado con exito.",
                 content = @Content(mediaType = "application/json",

@@ -50,14 +50,14 @@ public class ProductoService {
     // Listar un producto en especifico
     public Producto listarUnSoloProducto(Long id){
         log.debug("Iniciando busqueda de producto con ID {}", id);
-        return productoRepository.findById(id).orElseThrow(() -> new RuntimeException("Producto no encontrado " + id));
+        return productoRepository.findById(id).orElseThrow(() -> new RuntimeException("Producto no encontrado con ID: " + id));
     }
 
     // Actualizar producto
     public Producto actualizarProducto(Long id, ProductoDTO productoDTO) {
         log.info("Iniciando actualizacion del producto con ID: {}", id);
         Producto productoExistente = productoRepository.findById(id).orElseThrow(() -> {log.error("Error al actualizar producto, ID {} no encontrado", id);
-            return new RuntimeException("Producto no encontrado " + id);
+            return new RuntimeException("Producto no encontrado con ID: " + id);
         });
         if (productoRepository.existsByCodigoBarra(productoDTO.getCodigoBarra())
             && !productoExistente.getCodigoBarra().equals(productoDTO.getCodigoBarra())){
