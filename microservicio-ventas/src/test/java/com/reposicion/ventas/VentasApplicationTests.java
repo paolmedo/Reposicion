@@ -6,11 +6,11 @@ import com.reposicion.ventas.dto.VentasDTO;
 import com.reposicion.ventas.model.Ventas;
 import com.reposicion.ventas.repository.VentasRepository;
 import com.reposicion.ventas.service.VentasService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDateTime;
 
@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class) // Inicialización de Mockito
 class VentasServiceTest {
 
     @Mock
@@ -28,11 +29,6 @@ class VentasServiceTest {
 
     @InjectMocks
     private VentasService ventasService;
-
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
 
     @Test
     void registrarVenta_Exito() {
@@ -66,6 +62,8 @@ class VentasServiceTest {
         verify(sucursalClient, times(1)).obtenerSucursal(1L);
         verify(ventasRepository, times(1)).save(any(Ventas.class));
     }
+
+    @Test
     void eliminarVenta_Exito() {
         Ventas ventaActiva = new Ventas();
         ventaActiva.setId(1L);
@@ -81,11 +79,12 @@ class VentasServiceTest {
         verify(ventasRepository, times(1)).findById(1L);
         verify(ventasRepository, times(1)).save(ventaActiva);
     }
+
+    @Test
     void eliminarVenta_NoExiste() {
         // Simulamos que la base de datos no encuentra el ID 99
         when(ventasRepository.findById(99L)).thenReturn(java.util.Optional.empty());
 
-        // Ejecutamos
         boolean resultado = ventasService.eliminarVenta(99L);
 
         // Verificamos que retorna false y nunca intenta guardar nada
