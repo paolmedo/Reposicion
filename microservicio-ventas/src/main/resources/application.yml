@@ -1,28 +1,3 @@
-server:
-  port: 8081
-
-spring:
-  application:
-    name: Ventas-Service
-  datasource:
-    url: jdbc:mysql://127.0.0.1:3306/ventas_bd
-    username: root
-    password:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-      instance:
-        prefer-ip-address: true
-springdoc:
-  api-docs:
-    enabled: true
-  swagger-ui:
-    enabled: true
-    path: /doc/swagger-ui.html
+version https://git-lfs.github.com/spec/v1
+oid sha256:3a7ea31c5abd2fb101af51d6a5573c9cf316003d1b26f7b2bc23bb4857249fae
+size 638

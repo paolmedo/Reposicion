@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/ventas")
 @Tag(name = "Gestión de Ventas", description = "Endpoints para registrar, actualizar, anular y listar ventas")
 public class VentasController {
